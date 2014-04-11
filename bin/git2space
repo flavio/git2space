@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative '../lib/git2space'
+Git2space::Cli.start(ARGV)
+
