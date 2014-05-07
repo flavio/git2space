@@ -1,7 +1,6 @@
 require 'set'
 
 def find_stuff_changed_since_last_commit(git_root, git_path_query = nil, filters=[])
-  git_path_query = nil
   stuff_changed = Set.new
   Dir.chdir(git_root) do
     # find files under version control which have been changed

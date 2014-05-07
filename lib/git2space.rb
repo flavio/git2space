@@ -1,3 +1,7 @@
 require_relative "git2space/version"
+require_relative "git2space/local_routes"
+require_relative "git2space/helpers"
 require_relative "git2space/finder"
+require_relative "git2space/dispatcher"
+require_relative "git2space/server"
 require_relative "git2space/cli"
