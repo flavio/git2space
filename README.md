@@ -1,29 +1,31 @@
-# Git2space
 
-TODO: Write a gem description
+Simple (and highly experimental) project to smooth the development of the python
+parts of Spacewalk (and SUSE Manager).
 
-## Installation
+## The problem
 
-Add this line to your application's Gemfile:
+You just changed a python file and want to have the new version on one of your
+Spacewalk machines.
 
-    gem 'git2space'
+The usual approach consists in:
+  * rebuilding the rpm containing the file you just changed
+  * copying the rpm to your system
+  * installing the rpm
 
-And then execute:
+## The workaround
 
-    $ bundle
+git2space connects to a running spacewalk instance, looks for all the SUSE Manager
+package installed and inspects the contents of each package. A hash map is built
+using these informations and stored locally. The hash map is specific to a host
+and is cached to make git2space execution faster.
 
-Or install it yourself as:
+You can use git2space to push a modified file to a machine known by the tool.
+git2space will look at the filename and guess its final destination on the server
+by looking at the hash map. If the file is not found (you could be pushing a totally
+new file) git2space will try to guess the final location by looking at the siblings.
 
-    $ gem install git2space
+## Disclaimer
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/git2space/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+git2space is just a quick hack I wrote sometimes ago while working on SUSE Manager.
+It worked pretty fine for my needs but I never had the time to polish it or to
+write a good documentation.
